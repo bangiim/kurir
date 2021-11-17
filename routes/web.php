@@ -19,7 +19,22 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
+/* 
+|-----------------------------------------------
+| Level Akses Admin(1), Kurir(2) dan Manager(3)
+|-----------------------------------------------
+*/
 Route::middleware(['auth','ceklevel:1,2,3'])->group(function () {
     // Page Dashboard
     Route::get('/dashboard', 'DashboardController@index');
+});
+
+/* 
+|-----------------------------------------------
+| Level Akses Admin(1)
+|-----------------------------------------------
+*/
+Route::middleware(['auth','ceklevel:1'])->group(function () {
+    // Page Account
+    Route::resource('/account', 'UserController');
 });
