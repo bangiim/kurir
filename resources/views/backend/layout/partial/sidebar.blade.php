@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="/" class="brand-link">
-    <i class="fas fa-box-open fa-fw"></i>&nbsp;
+    &nbsp;&nbsp;&nbsp;<i class="fas fa-box-open fa-fw"></i>&nbsp;
     <span class="brand-text font-weight-light">App Kurir</span>
   </a>
 

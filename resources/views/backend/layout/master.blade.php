@@ -18,6 +18,7 @@
 
 <!-- Site wrapper -->
 <div class="wrapper">
+    @include('sweetalert::alert')
     <!-- Navbar -->
     @include('backend.layout.partial.nav')
     <!-- /.navbar -->
@@ -40,13 +41,7 @@
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-          <div class="card">
-            <div class="card-body">
-              @yield('content')
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
+          @yield('content')
         </div>
       </section>
       <!-- /.content -->
