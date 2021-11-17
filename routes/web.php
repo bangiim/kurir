@@ -19,7 +19,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','ceklevel:1,2,3'])->group(function () {
     // Page Dashboard
     Route::get('/dashboard', 'DashboardController@index');
 });
