@@ -46,19 +46,41 @@
           </li>
 
           <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-boxes"></i>
+              <p>Data Master</p>
+              <i class="right fas fa-angle-left"></i>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/kantor-cabang" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kantor Cabang</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pengelola-cabang" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pengelola Cabang</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/kurir" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kurir</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
             <a href="/account" class="nav-link">
               <i class=" nav-icon fas fa-user"></i>
               <p>Data Accounts</p>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a href="/anggota" class="nav-link">
-              <i class="nav-icon fas fa-boxes"></i>
-              <p>Data Paket</p>
-            </a>
-          </li>
         }
+
         @else
         {
           <li class="nav-item">
