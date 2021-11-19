@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Laravolt\Indonesia\Models\Province;
+use Laravolt\Indonesia\Models\City;
 use Illuminate\Http\Request;
 use App\KantorCabang;
 Use Alert;
@@ -25,8 +27,9 @@ class KantorCabangController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('backend.kantor-cabang.create');
+    {   
+        $provinces = Province::pluck('name', 'id');
+        return view('backend.kantor-cabang.create', compact('provinces'));
     }
 
     /**
@@ -37,6 +40,10 @@ class KantorCabangController extends Controller
      */
     public function store(Request $request)
     {
+        $cities = City::where('province_id', $request->get('id'))->pluck('name', 'id');
+
+        return response()->json($cities);
+
         $request->validate([
             'nama_kantor'     => 'required',
             'alamat'          => 'required',

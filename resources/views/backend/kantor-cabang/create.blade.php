@@ -5,7 +5,7 @@ Form Create Kantor Cabang
 @endsection
     
 @section('content')
-  <div class="card col-10">
+  <div class="card col-lg-10 col-md-12">
     <form action="/kantor-cabang" method="POST">
       <div class="card-body mt-3">
         @csrf
@@ -40,6 +40,39 @@ Form Create Kantor Cabang
         </div>
 
         <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Provinsi</label>
+          <div class="col-sm-10">
+            <div class="input-group">
+              <select class="form-control select2bs4" id="province" name="kantorcabang_id">
+                <option selected>-- Select a Provinsi --</option>
+                @foreach ($provinces as $id => $name)
+                    <option value="{{ $id }}">{{ $name }}</option>
+                @endforeach
+              </select>
+
+              @error('kantorcabang_id')
+                  <p class="text-danger">{{ $message }}</p>
+              @enderror
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Kota</label>
+          <div class="col-sm-10">
+            <div class="input-group">
+              <select class="form-control select2bs4" id="city" name="kantorcabang_id">
+                <option value="">-- Select a Kota --</option>
+              </select>
+
+              @error('kantorcabang_id')
+                  <p class="text-danger">{{ $message }}</p>
+              @enderror
+            </div>
+          </div>
+        </div>
+
+        {{-- <div class="form-group row">
           <label class="col-sm-2 col-form-label">Kota</label>
           <div class="col-sm-10">
             <div class="input-group">
@@ -52,7 +85,7 @@ Form Create Kantor Cabang
               @enderror
             </div>
           </div>
-        </div>
+        </div> --}}
 
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">No Telpon</label>
@@ -91,3 +124,35 @@ Form Create Kantor Cabang
     </form>
   </div>
 @endsection
+
+@push('style')
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('adminlte/plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+@endpush
+
+@push('script')
+    <!-- Select2 -->
+    <script src="{{asset('adminlte/plugins/select2/js/select2.full.min.js')}}"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+          //Initialize Select2 Elements
+          $('.select2bs4').select2({
+            theme: 'bootstrap4'
+          });
+
+          //Laravolt Indonesia
+          $('#province').on('change', function () {
+            axios.post('{{ route('kantor-cabang.store') }}', {id: $(this).val()})
+              .then(function (response) {
+                  $('#city').empty();
+
+                  $.each(response.data, function (id, name) {
+                      $('#city').append(new Option(name, id))
+                  })
+              });
+          });
+        });
+    </script>
+@endpush
