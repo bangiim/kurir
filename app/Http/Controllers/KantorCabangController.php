@@ -18,7 +18,8 @@ class KantorCabangController extends Controller
     public function index()
     {
         $kantorcabang = KantorCabang::all();
-        return view('backend.kantor-cabang.index', compact('kantorcabang'));
+        $cities = City::all();
+        return view('backend.kantor-cabang.index', compact('kantorcabang','cities'));
     }
 
     /**
@@ -33,6 +34,16 @@ class KantorCabangController extends Controller
     }
 
     /**
+     * Laravolt Indonesia
+     * Get Kota berdasarkan provinsi
+     */
+
+    public function cities(Request $request)
+    {
+        return \Indonesia::findProvince($request->id, ['cities'])->cities->pluck('name', 'id');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -40,23 +51,21 @@ class KantorCabangController extends Controller
      */
     public function store(Request $request)
     {
-        $cities = City::where('province_id', $request->get('id'))->pluck('name', 'id');
-
-        return response()->json($cities);
-
         $request->validate([
+            'province_id'     => 'required',
+            'city_id'         => 'required',
             'nama_kantor'     => 'required',
             'alamat'          => 'required',
-            'kota'            => 'required',
             'no_telp'         => 'required',
             'jam_operasional' => 'required'
         ]);
 
         $kantorcabang = new KantorCabang;
 
+        $kantorcabang->province_id     = $request->province_id;
+        $kantorcabang->city_id         = $request->city_id;
         $kantorcabang->nama_kantor     = $request->nama_kantor;
         $kantorcabang->alamat          = $request->alamat;
-        $kantorcabang->kota            = $request->kota;
         $kantorcabang->no_telp         = $request->no_telp;
         $kantorcabang->jam_operasional = $request->jam_operasional;
 
@@ -76,7 +85,9 @@ class KantorCabangController extends Controller
     public function show($id)
     {
         $kantorcabang = KantorCabang::findOrFail($id);
-        return view('backend.kantor-cabang.show', compact('kantorcabang'));
+        $provinces = Province::all();
+        $cities = City::all();
+        return view('backend.kantor-cabang.show', compact('kantorcabang','provinces','cities'));
     }
 
     /**
@@ -88,7 +99,9 @@ class KantorCabangController extends Controller
     public function edit($id)
     {
         $kantorcabang = KantorCabang::findOrFail($id);
-        return view('backend.kantor-cabang.edit', compact('kantorcabang'));
+        $provinces = Province::all();
+        $cities = City::all();
+        return view('backend.kantor-cabang.edit', compact('kantorcabang','provinces','cities'));
     }
 
     /**
@@ -101,18 +114,20 @@ class KantorCabangController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'province_id'     => 'required',
+            'city_id'         => 'required',
             'nama_kantor'     => 'required',
             'alamat'          => 'required',
-            'kota'            => 'required',
             'no_telp'         => 'required',
             'jam_operasional' => 'required'
         ]);
 
         $kantorcabang = KantorCabang::find($id);
 
+        $kantorcabang->province_id     = $request->province_id;
+        $kantorcabang->city_id         = $request->city_id;
         $kantorcabang->nama_kantor     = $request->nama_kantor;
         $kantorcabang->alamat          = $request->alamat;
-        $kantorcabang->kota            = $request->kota;
         $kantorcabang->no_telp         = $request->no_telp;
         $kantorcabang->jam_operasional = $request->jam_operasional;
 

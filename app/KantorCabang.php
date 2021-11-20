@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class KantorCabang extends Model
 {
     protected $table = 'kantorcabang';
-    protected $fillable = ['nama_kantor','alamat','kota','no_telp','jam_operasional'];
+    protected $fillable = ['province_id','city_id','nama_kantor','alamat','no_telp','jam_operasional'];
 
     public function pengelolacabang()
     {
@@ -17,5 +17,15 @@ class KantorCabang extends Model
     public function kurir()
     {
         return $this->hasMany('App\Kurir');
+    }
+
+    public function provinsi()
+    {
+        return $this->belongsTo('Laravolt\Indonesia\Models\Province');
+    }
+
+    public function kota()
+    {
+        return $this->belongsTo('Laravolt\Indonesia\Models\City');
     }
 }

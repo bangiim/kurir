@@ -19,18 +19,19 @@ class CreateKantorCabangTable extends Migration
             $table->char('city_id', 4);
             $table->string('nama_kantor', 50);
             $table->text('alamat');
-            $table->string('kota', 50);
             $table->string('no_telp', 20);
             $table->string('jam_operasional');
             $table->timestamps();
 
             $table->foreign('province_id')
                 ->references('id')
-                ->on(config('laravolt.indonesia.table_prefix').'provinces');
+                ->on(config('laravolt.indonesia.table_prefix').'provinces')
+                ->onUpdate('cascade')->onDelete('restrict');
 
             $table->foreign('city_id')
                 ->references('id')
-                ->on(config('laravolt.indonesia.table_prefix').'cities');
+                ->on(config('laravolt.indonesia.table_prefix').'cities')
+                ->onUpdate('cascade')->onDelete('restrict');
         });
     }
 

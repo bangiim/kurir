@@ -98,7 +98,7 @@ class KurirController extends Controller
         $request->validate([
             'nama'            => 'required',
             'no_hp'           => 'required',
-            'email'           => 'required|string|email|max:255|unique:kurir',
+            'email'           => 'required|string|email|max:255',
             'kantorcabang_id' => 'required'
         ]);
 

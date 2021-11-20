@@ -55,12 +55,12 @@ Form Edit Account
               <select class="form-control" name="level_id">
                 <option>-- Select a Level --</option>
                 @foreach ($level as $item)
-                      @if ($item->id === $user->level_id)
-                          <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
-                      @else
-                          <option value="{{ $item->id }}">{{ $item->name }}</option>
-                      @endif
-                  @endforeach
+                  @if ($item->id === $user->level_id)
+                      <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
+                  @else
+                      <option value="{{ $item->id }}">{{ $item->name }}</option>
+                  @endif
+                @endforeach
               </select>
               <div class="input-group-append">
                 <div class="input-group-text">

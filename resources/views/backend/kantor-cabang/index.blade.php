@@ -17,7 +17,6 @@ Data Kantor Cabang
           <tr>
             <th>No</th>
             <th>Nama Kantor</th>
-            <th>Alamat</th>
             <th>Kota</th>
             <th>No Telp</th>
             <th>Jam Operasional</th>
@@ -29,12 +28,18 @@ Data Kantor Cabang
             <tr>
               <td>{{$key + 1}}</td>
               <td>{{$item->nama_kantor}}</td>
-              <td>{{$item->alamat}}</td>
-              <td>{{$item->kota}}</td>
+              <td>
+                @foreach ($cities as $itemKota)
+                  @if ($itemKota->id === $item->city_id)
+                      {{ $itemKota->name }}
+                  @endif
+                @endforeach
+              </td>
               <td>{{$item->no_telp}}</td>
               <td>{{$item->jam_operasional}}</td>
               <td>
                 <form action="/kantor-cabang/{{$item->id}}" method="post">
+                  <a href="/kantor-cabang/{{$item->id}}" class="btn btn-info btn-sm">Detail</a>
                   <a href="/kantor-cabang/{{$item->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
                   
                   @csrf
@@ -47,7 +52,7 @@ Data Kantor Cabang
 
           @empty
             <tr>
-              <td colspan="7">Data Masih Kosong</td>
+              <td colspan="6">Data Masih Kosong</td>
             </tr>
 
           @endforelse
@@ -56,7 +61,6 @@ Data Kantor Cabang
           <tr>
             <th>No</th>
             <th>Nama Kantor</th>
-            <th>Alamat</th>
             <th>Kota</th>
             <th>No Telp</th>
             <th>Jam Operasional</th>

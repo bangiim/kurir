@@ -86,5 +86,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 6. Buat **database**, lalu masukkan nama database ke `DB_DATABASE` di file `.env`
 7. `php artisan key:generate`
 8. `php artisan migrate`
-9. `php artisan serve`
+9. `php artisan laravolt:indonesia:seed`
+10. `php artisan serve`
 
