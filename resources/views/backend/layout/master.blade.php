@@ -50,12 +50,8 @@
 
     <!-- Main Footer -->
     <footer class="main-footer">
-      <!-- To the right -->
-      <div class="float-right d-none d-sm-inline">
-        Final Project 1 - PKS Digital School
-      </div>
       <!-- Default to the left -->
-      <strong>Copyright &copy; 2021 <a href="https://gitlab.com/bangiim/pks-sip">Kelompok 18</a>.</strong> All rights reserved.
+      <strong>Copyright &copy; 2021 <a href="#">Kurir</a>.</strong> All rights reserved.
     </footer>
 
     <!-- Control Sidebar -->
@@ -74,7 +70,8 @@
 <script src="{{asset('adminlte/dist/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('adminlte/dist/js/demo.js')}}"></script>
-
+<!-- JS App -->
+<script src="{{ asset('js/app.js') }}"></script>
 @stack('script')
 </body>
 </html>

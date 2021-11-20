@@ -19,7 +19,30 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
+/* 
+|-----------------------------------------------
+| Level Akses Admin(1), Kurir(2) dan Manager(3)
+|-----------------------------------------------
+*/
 Route::middleware(['auth','ceklevel:1,2,3'])->group(function () {
     // Page Dashboard
     Route::get('/dashboard', 'DashboardController@index');
+});
+
+/* 
+|-----------------------------------------------
+| Level Akses Admin(1)
+|-----------------------------------------------
+*/
+Route::middleware(['auth','ceklevel:1'])->group(function () {
+    // Page Account
+    Route::resource('/account', 'UserController');
+    //LaravoltIndonesia:Get Kota
+    Route::get('cities', 'KantorCabangController@cities')->name('cities');
+    // Page Kantor Cabang
+    Route::resource('/kantor-cabang', 'KantorCabangController');
+    // Page Pengelola Cabang
+    Route::resource('/pengelola-cabang', 'PengelolaCabangController');
+    // Page Kurir
+    Route::resource('/kurir', 'KurirController');
 });
