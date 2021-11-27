@@ -45,4 +45,8 @@ Route::middleware(['auth','ceklevel:1'])->group(function () {
     Route::resource('/pengelola-cabang', 'PengelolaCabangController');
     // Page Kurir
     Route::resource('/kurir', 'KurirController');
+    // Page Jarak
+    Route::resource('/jarak', 'JarakController');
+    // Page Pengiriman
+    Route::resource('/pengiriman', 'PengirimanController');
 });

@@ -46,6 +46,13 @@
           </li>
 
           <li class="nav-item">
+            <a href="/pengiriman" class="nav-link">
+              <i class="nav-icon fas fa-truck-loading"></i>
+              <p>Pengiriman</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-boxes"></i>
               <p>Data Master</p>
@@ -68,6 +75,12 @@
                 <a href="/kurir" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kurir</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/jarak" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Jarak</p>
                 </a>
               </li>
             </ul>

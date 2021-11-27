@@ -9,6 +9,11 @@ class KantorCabang extends Model
     protected $table = 'kantorcabang';
     protected $fillable = ['province_id','city_id','nama_kantor','alamat','no_telp','jam_operasional'];
 
+    public function pengiriman()
+    {
+        return $this->hasOne('App\Pengiriman');
+    }
+
     public function pengelolacabang()
     {
         return $this->hasOne('App\PengelolaCabang');

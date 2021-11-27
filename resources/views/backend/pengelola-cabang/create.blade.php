@@ -5,13 +5,13 @@ Form Create Pengelola Cabang
 @endsection
     
 @section('content')
-  <div class="card col-10">
+  <div class="card col-lg-8 col-sm-12">
     <form action="/pengelola-cabang" method="POST">
       <div class="card-body mt-3">
         @csrf
         <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Nama Lengkap</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 col-lg-2 col-form-label">Nama Lengkap</label>
+          <div class="col-sm-9 col-lg-10">
             <div class="input-group">
               <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" placeholder="Nama Lengkap">
 
@@ -25,8 +25,8 @@ Form Create Pengelola Cabang
         </div>
 
         <div class="form-group row">
-          <label class="col-sm-2 col-form-label">No HP</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 col-lg-2 col-form-label">No HP</label>
+          <div class="col-sm-9 col-lg-10">
             <div class="input-group">
               <input type="number" class="form-control @error('no_hp') is-invalid @enderror" name="no_hp" placeholder="No Handphone">
               
@@ -40,8 +40,8 @@ Form Create Pengelola Cabang
         </div>
 
         <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Email</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 col-lg-2 col-form-label">Email</label>
+          <div class="col-sm-9 col-lg-10">
             <div class="input-group">
               <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email">
               
@@ -55,8 +55,8 @@ Form Create Pengelola Cabang
         </div>
 
         <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Kantor Cabang</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 col-lg-2 col-form-label">Kantor Cabang</label>
+          <div class="col-sm-9 col-lg-10">
             <div class="input-group">
               <select class="form-control select2bs4" name="kantorcabang_id">
                 <option selected>-- Select a Kantor Cabang --</option>

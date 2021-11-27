@@ -1,14 +1,14 @@
 @extends('backend.layout.master')
 
 @section('judul')
-Data Pengelola Cabang
+Data Jarak
 @endsection
     
 @section('content')
   
   <div class="card">
     <div class="card-header">
-      <a href="/pengelola-cabang/create" class="btn btn-success"><i class="fas fa-plus"></i> Add Data</a>
+      <a href="/jarak/create" class="btn btn-success"><i class="fas fa-plus"></i> Add Data</a>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -16,36 +16,32 @@ Data Pengelola Cabang
         <thead>
           <tr>
             <th>No</th>
-            <th>Nama</th>
-            <th>No HP</th>
-            <th>Email</th>
-            <th>Kantor Cabang</th>
+            <th>Jarak</th>
+            <th>Harga</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          @forelse ($pengelolacabang as $key => $item)
+          @forelse ($jarak as $key => $item)
             <tr>
               <td>{{$key + 1}}</td>
-              <td>{{$item->nama}}</td>
-              <td>{{$item->no_hp}}</td>
-              <td>{{$item->email}}</td>
-              <td>{{$item->kantorcabang->nama_kantor}}</td>
+              <td>{{$item->jarak}}</td>
+              <td>{{$item->harga}}</td>
               <td>
-                <form action="/pengelola-cabang/{{$item->id}}" method="post">
-                  <a href="/pengelola-cabang/{{$item->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                <form action="/jarak/{{$item->id}}" method="post">
+                  <a href="/jarak/{{$item->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
                   
                   @csrf
                   @method('delete')
                   <input type="submit" class="btn btn-danger btn-sm" value="Delete">
                 </form>
-                {{-- <a href="/pengelola-cabang/create" class="btn btn-danger btn-sm">Delete</a> --}}
+                {{-- <a href="/jarak/create" class="btn btn-danger btn-sm">Delete</a> --}}
               </td>
             </tr>
 
           @empty
             <tr>
-              <td colspan="6">Data Masih Kosong</td>
+              <td colspan="4">Data Masih Kosong</td>
             </tr>
 
           @endforelse
@@ -53,10 +49,8 @@ Data Pengelola Cabang
         <tfoot>
           <tr>
             <th>No</th>
-            <th>Nama</th>
-            <th>No HP</th>
-            <th>Email</th>
-            <th>Kantor Cabang</th>
+            <th>Jarak</th>
+            <th>Harga</th>
             <th>Action</th>
           </tr>
         </tfoot>
