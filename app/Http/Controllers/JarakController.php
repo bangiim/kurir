@@ -112,6 +112,7 @@ class JarakController extends Controller
      */
     public function destroy($id)
     {
+        $jarak = Jarak::find($id);
         $jarak->delete();
 
         Alert::success('Delete', 'Jarak Berhasil Dihapus');

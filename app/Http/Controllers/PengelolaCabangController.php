@@ -124,6 +124,7 @@ class PengelolaCabangController extends Controller
      */
     public function destroy($id)
     {
+        $pengelolacabang = PengelolaCabang::find($id);
         $pengelolacabang->delete();
 
         Alert::success('Delete', 'Pengelola Cabang Berhasil Dihapus');

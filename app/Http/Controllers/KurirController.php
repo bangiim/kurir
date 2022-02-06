@@ -124,6 +124,7 @@ class KurirController extends Controller
      */
     public function destroy($id)
     {
+        $kurir = Kurir::find($id);
         $kurir->delete();
 
         Alert::success('Delete', 'Kurir Berhasil Dihapus');

@@ -146,6 +146,7 @@ class KantorCabangController extends Controller
      */
     public function destroy($id)
     {
+        $kantorcabang = KantorCabang::find($id);
         $kantorcabang->delete();
 
         Alert::success('Delete', 'Kantor Cabang Berhasil Dihapus');

@@ -172,6 +172,7 @@ class PengirimanController extends Controller
      */
     public function destroy($id)
     {
+        $pengiriman = Pengiriman::find($id);
         $pengiriman->delete();
 
         Alert::success('Delete', 'Pengiriman Berhasil Dihapus');
