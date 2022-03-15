@@ -79,6 +79,8 @@ class PengirimanController extends Controller
         $pengiriman->biaya           = $request->biaya;
         $pengiriman->status          = $request->status;
 
+        dd($pengiriman);
+
         $pengiriman->save();
 
         Alert::success('Create', 'Pengiriman Berhasil Ditambah');

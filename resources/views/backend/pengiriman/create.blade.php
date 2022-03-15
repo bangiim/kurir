@@ -199,7 +199,7 @@ Form Create Pengiriman
               <select class="form-control select2bs4" name="jarak_id" id="jarak_id" onchange="total()">
                 <option selected>-- Pilih Jarak --</option>
                 @foreach ($jarak as $item)
-                    <option value="{{ $item->harga }}">{{ $item->jarak }} = Rp {{ $item->harga }}</option>
+                    <option id="{{ $item->harga }}">{{ $item->jarak }} = Rp {{ $item->harga }}</option>
                 @endforeach
               </select>
 

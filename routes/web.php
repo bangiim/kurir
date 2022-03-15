@@ -11,9 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::view('/', 'welcome');
+Route::view('/company-profile', 'company-profile');
+Route::view('/courier-cargo', 'courier-cargo');
+Route::view('/logistics-supply', 'logistics-supply');
+Route::view('/branches-agents', 'branches-agents');
+Route::view('/technology', 'technology');
+Route::view('/contact-us', 'contact-us');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
