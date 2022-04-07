@@ -5,7 +5,7 @@ Form Create Pengiriman
 @endsection
     
 @section('content')
-  <div class="card col-lg-8 col-sm-12">
+  <div class="card col-lg-10 col-sm-12">
     <form action="/pengiriman" method="POST">
       <div class="card-body mt-3">
         @csrf
@@ -199,7 +199,7 @@ Form Create Pengiriman
               <select class="form-control select2bs4" name="jarak_id" id="jarak_id" onchange="total()">
                 <option selected>-- Pilih Jarak --</option>
                 @foreach ($jarak as $item)
-                    <option id="{{ $item->harga }}">{{ $item->jarak }} = Rp {{ $item->harga }}</option>
+                    <option value="{{ $item->id }} = {{ $item->harga }}">{{ $item->jarak }} = Rp {{ $item->harga }}</option>
                 @endforeach
               </select>
 
@@ -209,6 +209,8 @@ Form Create Pengiriman
             </div>
           </div>
         </div>
+            
+        <input type="text" name="ambilid" id="ambilid" hidden>
 
         <div class="form-group row">
           <label class="col-sm-3 col-lg-2 col-form-label">Biaya</label>
@@ -220,7 +222,7 @@ Form Create Pengiriman
                 </div>
               </div>
               <input type="number" class="form-control @error('biaya') is-invalid @enderror" name="biaya" id="biaya" placeholder="Total Biaya" readonly>
-
+              
               @error('biaya')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -272,7 +274,7 @@ Form Create Pengiriman
             //Initialize Select2 Elements
             $('.select2bs4').select2({
               theme: 'bootstrap4'
-            });
+            });  
         });
     </script>
 
@@ -281,7 +283,14 @@ Form Create Pengiriman
         var valueJenisBarang = document.getElementById('jenis_barang').value;
         var valueLayanan     = document.getElementById('layanan').value;
         var valueBerat       = parseInt(document.getElementById('berat').value);
-        var valueJarak       = parseInt(document.getElementById('jarak_id').value);
+        var valueJarak       = document.getElementById('jarak_id').value;
+
+        var tampungId = valueJarak;
+        tampungId = tampungId.substring(0, tampungId.indexOf('='));
+        document.getElementById('ambilid').value = tampungId;
+
+        var tampungHarga = valueJarak;
+        tampungHarga = parseInt(tampungHarga.substring(4)); 
 
         //Menentukan harga Jenis Barang
         if(valueJenisBarang == 'Dokumen') {
@@ -297,8 +306,7 @@ Form Create Pengiriman
           var nilaiLayanan = 5000;
         }
 
-        var totalBiaya = nilaiJenisBarang + (nilaiLayanan * valueBerat) + valueJarak;
-
+        var totalBiaya = nilaiJenisBarang + (nilaiLayanan * valueBerat) + tampungHarga;
         document.getElementById('biaya').value = totalBiaya;
       }
     </script>

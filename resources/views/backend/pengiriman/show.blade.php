@@ -11,7 +11,7 @@ Detail Data Pengiriman : <b>{{ $pengiriman->no_resi }}</b>
       <table class="table table-bordered table-striped">
         <tbody>
           <tr>
-            <th colspan="4" class="text-center"><h4>Informasi Pengiriman</h4></th>
+            <th colspan="4" class="text-center"><h4><b>Informasi Pengiriman</b></h4></th>
           </tr>
           <tr>
             <th colspan="2" class="text-center">Data Pengirim</th>
@@ -70,9 +70,9 @@ Detail Data Pengiriman : <b>{{ $pengiriman->no_resi }}</b>
           </tr>
         </tbody>
       </table>
-    </div>
-  </div>
 
-  <a href="/pengiriman" class="btn btn-info mt-4">Back</a>
-  <a href="/pengiriman/{{$pengiriman->id}}/edit" class="btn btn-warning mt-4">Edit</a>
+      <a href="/pengiriman" class="btn btn-info mt-4">Back</a>
+      <a href="/pengiriman/{{$pengiriman->id}}/edit" class="btn btn-warning mt-4">Edit</a>
+    </div>
+  </div>  
 @endsection

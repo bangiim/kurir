@@ -23,8 +23,8 @@
       <li><a href="/contact-us" class="nav-link px-2 text-white">Contact Us</a></li>
     </ul>
 
-    {{-- <div class="text-end">
-      <a href="/contact" class="btn btn-outline-warning me-2"><i class="fas fa-sign-in"></i>&nbsp; Login</a>
-    </div> --}}
+    <div class="text-end">
+      <a href="/login" class="btn btn-outline-warning me-2">Sign In</a>
+    </div>
   </div>
 </div>

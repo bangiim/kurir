@@ -74,12 +74,12 @@ class PengirimanController extends Controller
         $pengiriman->jenis_barang    = $request->jenis_barang;
         $pengiriman->berat           = $request->berat;
         $pengiriman->layanan         = $request->layanan;
-        $pengiriman->jarak_id        = $request->jarak_id;
+        $pengiriman->jarak_id        = $request->ambilid;
         $pengiriman->kantorcabang_id = $request->kantorcabang_id;
         $pengiriman->biaya           = $request->biaya;
         $pengiriman->status          = $request->status;
 
-        dd($pengiriman);
+        //dd($pengiriman);
 
         $pengiriman->save();
 
@@ -154,10 +154,12 @@ class PengirimanController extends Controller
         $pengiriman->jenis_barang    = $request->jenis_barang;
         $pengiriman->berat           = $request->berat;
         $pengiriman->layanan         = $request->layanan;
-        $pengiriman->jarak_id        = $request->jarak_id;
+        $pengiriman->jarak_id        = $request->ambilid;
         $pengiriman->kantorcabang_id = $request->kantorcabang_id;
         $pengiriman->biaya           = $request->biaya;
         $pengiriman->status          = $request->status;
+
+        //dd($pengiriman);
 
         $pengiriman->save();
 

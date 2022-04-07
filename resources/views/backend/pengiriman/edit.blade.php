@@ -215,9 +215,9 @@ Form Edit Pengeiriman
                 <option selected>-- Pilih Jarak --</option>
                 @foreach ($jarak as $item)
                   @if ($item->id === $pengiriman->jarak_id)
-                      <option value="{{ $item->harga }}" selected>{{ $item->jarak }} = Rp {{ $item->harga }}</option>
+                      <option value="{{ $item->id }} = {{ $item->harga }}" selected>{{ $item->jarak }} = Rp {{ $item->harga }}</option>
                   @else
-                      <option value="{{ $item->harga }}">{{ $item->jarak }} = Rp {{ $item->harga }}</option>
+                      <option value="{{ $item->id }} = {{ $item->harga }}">{{ $item->jarak }} = Rp {{ $item->harga }}</option>
                   @endif
                 @endforeach
               </select>
@@ -229,6 +229,8 @@ Form Edit Pengeiriman
           </div>
         </div>
 
+        <input type="text" name="ambilid" id="ambilid" value="{{ $pengiriman->jarak_id }}" hidden>
+
         <div class="form-group row">
           <label class="col-sm-3 col-lg-2 col-form-label">Biaya</label>
           <div class="col-sm-9 col-lg-10">
@@ -238,7 +240,7 @@ Form Edit Pengeiriman
                   Rp
                 </div>
               </div>
-              <input type="number" class="form-control @error('biaya') is-invalid @enderror" name="biaya" id="biaya" placeholder="Total Biaya" value="{{ $pengiriman->biaya }}" readonly>
+              <input type="text" class="form-control @error('biaya') is-invalid @enderror" name="biaya" id="biaya" placeholder="Total Biaya" value="{{ $pengiriman->biaya }}" readonly>
 
               @error('biaya')
                 <span class="invalid-feedback" role="alert">
@@ -304,11 +306,45 @@ Form Edit Pengeiriman
     <script src="{{asset('adminlte/plugins/select2/js/select2.full.min.js')}}"></script>
     <!-- Page specific script -->
     <script>
-        $(function () {
-            //Initialize Select2 Elements
-            $('.select2bs4').select2({
-              theme: 'bootstrap4'
-            });
-        });
+      $(function () {
+          //Initialize Select2 Elements
+          $('.select2bs4').select2({
+            theme: 'bootstrap4'
+          });
+      });
     </script>
+
+    <script>
+      function total() {
+        var valueJenisBarang = document.getElementById('jenis_barang').value;
+        var valueLayanan     = document.getElementById('layanan').value;
+        var valueBerat       = parseInt(document.getElementById('berat').value);
+        var valueJarak       = document.getElementById('jarak_id').value;
+
+        var tampungId = valueJarak;
+        tampungId = tampungId.substring(0, tampungId.indexOf('='));
+        document.getElementById('ambilid').value = tampungId;
+
+        var tampungHarga = valueJarak;
+        tampungHarga = parseInt(tampungHarga.substring(4)); 
+
+        //Menentukan harga Jenis Barang
+        if(valueJenisBarang == 'Dokumen') {
+          var nilaiJenisBarang = 1000;
+        } else {
+          var nilaiJenisBarang = 2000;
+        }
+
+        //Menentukan harga Jenis Layanan
+        if(valueLayanan == 'Reguler') {
+          var nilaiLayanan = 2000;
+        } else {
+          var nilaiLayanan = 5000;
+        }
+
+        var totalBiaya = nilaiJenisBarang + (nilaiLayanan * valueBerat) + tampungHarga;
+        document.getElementById('biaya').value = totalBiaya;
+      }
+    </script>
+
 @endpush

@@ -11,9 +11,11 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+/* 
+|-----------------------------------------------
+| Akses Halaman Depan
+|-----------------------------------------------
+*/
 Route::view('/', 'welcome');
 Route::view('/company-profile', 'company-profile');
 Route::view('/courier-cargo', 'courier-cargo');
