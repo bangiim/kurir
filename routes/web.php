@@ -24,6 +24,12 @@ Route::view('/branches-agents', 'branches-agents');
 Route::view('/technology', 'technology');
 Route::view('/contact-us', 'contact-us');
 
+//Route Lacak
+Route::get('/lacak', 'LacakPengirimanController@search');
+
+//Detail Paket
+Route::get('/detailpaket/{pengiriman_id}', 'LacakPengirimanController@detail'); 
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();

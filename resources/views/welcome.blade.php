@@ -8,6 +8,7 @@
           <h1 class="fw-light">Lacak Lokasi</h1>
           <p class="lead text-muted">Cari tau posisi paket Anda saat ini.</p>
         </div>
+        <!-- Start kode untuk form pencarian -->
         <form class="form" method="get" action="/lacak">
           <div class="input-group">
             <input class="form-control form-control-lg " type="search" placeholder="Masukan No Resi Paket" name="keyword">
@@ -18,6 +19,12 @@
             </div>
           </div>
         </form>
+        <!-- Start kode untuk form pencarian -->
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+        @endif
       </div>
     </section>
   </div>

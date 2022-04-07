@@ -53,10 +53,6 @@
       </button>
     </div>
 
-
-
-
-
     <div class="container mt-4 mb-5">
     	@yield('content')
     </div>
