@@ -65,3 +65,21 @@ Route::middleware(['auth','ceklevel:1'])->group(function () {
     // Page Pengiriman
     Route::resource('/pengiriman', 'PengirimanController');
 });
+
+/* 
+|-----------------------------------------------
+| Level Akses Manager(3)
+|-----------------------------------------------
+*/
+Route::middleware(['auth','ceklevel:1,3'])->group(function () {
+    // Page Kantor Cabang
+    Route::get('/kantor-cabang', 'KantorCabangController@index');
+    // Page Pengelola Cabang
+    Route::get('/pengelola-cabang', 'PengelolaCabangController@index');
+    // Page Kurir
+    Route::get('/kurir', 'KurirController@index');
+    // Page Pengiriman
+    Route::get('/pengiriman', 'PengirimanController@index');
+    // Route::get('/laporan/cetak-data-pengiriman', 'PengirimanController@cetakData');
+    // Route::get('/laporan/cetak-data-pertanggal/{tglAwal}/{tglAkhir}', 'PengirimanController@cetakDataPertanggal');
+});

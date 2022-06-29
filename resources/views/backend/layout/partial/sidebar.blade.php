@@ -36,8 +36,8 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
+        {{-- Level Admin --}}
         @if(Auth::user()->level_id=='1')
-        {
           <li class="nav-item">
             <a href="/dashboard" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
@@ -92,10 +92,8 @@
               <p>Data Accounts</p>
             </a>
           </li>
-        }
-
-        @else
-        {
+        {{-- Level Kurir --}}
+        @elseif(Auth::user()->level_id=='2')
           <li class="nav-item">
             <a href="/dashboard" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
@@ -108,7 +106,47 @@
               <p>Laporan</p>
             </a>
           </li>
-        }
+        {{-- Level Manager --}}
+        @else
+          <li class="nav-item">
+            <a href="/dashboard" class="nav-link">
+              <i class="nav-icon fas fa-home"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-file-excel"></i>
+              <p>Laporan</p>
+              <i class="right fas fa-angle-left"></i>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/kantor-cabang" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kantor Cabang</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pengelola-cabang" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pengelola Cabang</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/kurir" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kurir</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pengiriman" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pengiriman</p>
+                </a>
+              </li>
+            </ul>
+          </li>
         @endif        
       </ul>
     </nav>
